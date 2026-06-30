@@ -59,19 +59,28 @@ class PhoneLoginOptionViewController: UIViewController {
     
     private let orderSimLabel : UILabel = {
         let label = UILabel()
-        //label.text = "Нет SIM-карты? Заказать"
         label.translatesAutoresizingMaskIntoConstraints = false
-        
-//        let part1 = NSAttributedString(string: "Нет SIM-карты?", attributes: [.foregroundColor = UIColor.gray])
-//        let part2 = NSAttributedString(string: "Заказать", attributes: [.foregroundColor = AppColors.green])
+        let part1 = NSAttributedString(string: "Нет SIM-карты? ", attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 17)])
+        let part2 = NSAttributedString(string: "Заказать", attributes: [.foregroundColor: AppColors.green, .font: UIFont.systemFont(ofSize: 17)])
+        let fullLabel = NSMutableAttributedString()
+        fullLabel.append(part1)
+        fullLabel.append(part2)
+        label.attributedText = fullLabel
         return label
     }()
+    
+    private let buttonContinue : CustomButton = {
+        let btn = CustomButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Продолжить", for: .normal)
+        return btn
+    }()
+    
     
     // MARK: - private functions
     private func setupImageView(){
         countryCodeImageView.contentMode = .scaleAspectFit
         countryCodeImageView.translatesAutoresizingMaskIntoConstraints = false
-        
     }
     
     private func applyConstraints() {
@@ -90,7 +99,14 @@ class PhoneLoginOptionViewController: UIViewController {
             phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             phoneNumberTextField.heightAnchor.constraint(equalToConstant: 60),
             phoneNumberTextField.leadingAnchor.constraint(equalTo: phoneNumberStackView.trailingAnchor, constant: 8),
-            phoneNumberTextField.topAnchor.constraint(equalTo: tabLabel.bottomAnchor, constant: 16)
+            phoneNumberTextField.topAnchor.constraint(equalTo: tabLabel.bottomAnchor, constant: 16),
+            
+            orderSimLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 36),
+            orderSimLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            orderSimLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            buttonContinue.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonContinue.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ].forEach { $0.isActive = true }
     }
     
@@ -105,6 +121,7 @@ class PhoneLoginOptionViewController: UIViewController {
         phoneNumberStackView.addArrangedSubview(countryCodeLabel)
         view.addSubview(phoneNumberTextField)
         view.addSubview(orderSimLabel)
+        view.addSubview(buttonContinue)
         applyConstraints()
     }
 }
