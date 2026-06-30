@@ -52,6 +52,7 @@ class PhoneLoginOptionViewController: UIViewController {
         text.layer.cornerRadius = 20
         text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         text.leftViewMode = .always
+        text.textColor = .black
         text.attributedPlaceholder = NSAttributedString(string: "Номер телефона", attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 17)])
         text.keyboardType = .numberPad
         return text

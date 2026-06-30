@@ -11,5 +11,5 @@ class AppColors {
     static let green: UIColor = UIColor(red: 0, green: 185/255, blue: 86/255, alpha: 1)
     
     static let mainColor = UIColor(named: "main-color")
-    static let blue = UIColor(named: "blue")
+    static let blue: UIColor = UIColor(red: 52/255, green: 170/255, blue: 242/255, alpha: 1)
 }
