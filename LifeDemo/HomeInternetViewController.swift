@@ -15,7 +15,7 @@ class HomeInternetViewController: UIViewController {
         let label = UILabel()
         label.text = "Введите лицевой счет"
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class HomeInternetViewController: UIViewController {
     }
     
     // MARK: - override methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tabTextLabel)

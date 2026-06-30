@@ -15,7 +15,7 @@ class PhoneLoginOptionViewController: UIViewController {
         let label = UILabel()
         label.text = "Введите номер телефона"
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false

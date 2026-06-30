@@ -15,8 +15,9 @@ class LoginViewController : UIViewController {
         let segmentedControl = UISegmentedControl(items: ["Мобильная связь", "Домашний интернет"])
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.layoutMargins = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
         segmentedControl.selectedSegmentTintColor = .white
-        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 13)], for: .normal)
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 15)], for: .normal)
         return segmentedControl
     }()
     
@@ -54,11 +55,10 @@ class LoginViewController : UIViewController {
     
     private func applyConstraints() {
         [
-            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 30),
-            segmentedControl.widthAnchor.constraint(equalToConstant: 330),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 35),
             
             tab1.view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
             tab1.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),

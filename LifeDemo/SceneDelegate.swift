@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let firstViewController = ViewController()
         let navBar = UINavigationController(rootViewController: firstViewController)
+        //navBar.navigationBar.tintColor = AppColors.green
         window?.rootViewController = navBar
         window?.makeKeyAndVisible()
         
