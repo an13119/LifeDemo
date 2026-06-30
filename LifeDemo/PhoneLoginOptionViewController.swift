@@ -37,8 +37,11 @@ class PhoneLoginOptionViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 8
+        stackView.alignment = .center
         stackView.backgroundColor = .white
         stackView.layer.cornerRadius = 20
+        stackView.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
@@ -47,14 +50,28 @@ class PhoneLoginOptionViewController: UIViewController {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .white
         text.layer.cornerRadius = 20
+        text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
+        text.leftViewMode = .always
+        text.attributedPlaceholder = NSAttributedString(string: "Номер телефона", attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 17)])
+        text.keyboardType = .numberPad
         return text
+    }()
+    
+    private let orderSimLabel : UILabel = {
+        let label = UILabel()
+        //label.text = "Нет SIM-карты? Заказать"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+//        let part1 = NSAttributedString(string: "Нет SIM-карты?", attributes: [.foregroundColor = UIColor.gray])
+//        let part2 = NSAttributedString(string: "Заказать", attributes: [.foregroundColor = AppColors.green])
+        return label
     }()
     
     // MARK: - private functions
     private func setupImageView(){
         countryCodeImageView.contentMode = .scaleAspectFit
         countryCodeImageView.translatesAutoresizingMaskIntoConstraints = false
-//        countryCodeImageView.layoutMargins = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
+        
     }
     
     private func applyConstraints() {
@@ -65,19 +82,17 @@ class PhoneLoginOptionViewController: UIViewController {
             
             phoneNumberStackView.topAnchor.constraint(equalTo: tabLabel.bottomAnchor, constant: 16),
             phoneNumberStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            phoneNumberStackView.widthAnchor.constraint(equalToConstant: 114),
             phoneNumberStackView.heightAnchor.constraint(equalToConstant: 60),
             
             countryCodeImageView.widthAnchor.constraint(equalToConstant: 28),
             countryCodeImageView.heightAnchor.constraint(equalToConstant: 28),
             
-            phoneNumberTextField.widthAnchor.constraint(equalToConstant: 239),
+            phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             phoneNumberTextField.heightAnchor.constraint(equalToConstant: 60),
             phoneNumberTextField.leadingAnchor.constraint(equalTo: phoneNumberStackView.trailingAnchor, constant: 8),
             phoneNumberTextField.topAnchor.constraint(equalTo: tabLabel.bottomAnchor, constant: 16)
         ].forEach { $0.isActive = true }
     }
-    
     
     // MARK: - override methods
     
@@ -89,6 +104,7 @@ class PhoneLoginOptionViewController: UIViewController {
         phoneNumberStackView.addArrangedSubview(countryCodeImageView)
         phoneNumberStackView.addArrangedSubview(countryCodeLabel)
         view.addSubview(phoneNumberTextField)
+        view.addSubview(orderSimLabel)
         applyConstraints()
     }
 }
