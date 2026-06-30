@@ -76,6 +76,21 @@ class PhoneLoginOptionViewController: UIViewController {
         return btn
     }()
     
+    private let userAgreementLabel : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let part1 = NSAttributedString(string: "Нажимая кнопку «Продолжить», вы соглашаетесь с\n", attributes: [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 13)])
+        let part2 = NSAttributedString(string: "«Условиями пользовательского соглашения»", attributes: [.foregroundColor: AppColors.blue, .font: UIFont.systemFont(ofSize: 13)])
+        let fullLabel = NSMutableAttributedString()
+        fullLabel.append(part1)
+        fullLabel.append(part2)
+        label.attributedText = fullLabel
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        return label
+    }()
+    
     
     // MARK: - private functions
     private func setupImageView(){
@@ -103,10 +118,13 @@ class PhoneLoginOptionViewController: UIViewController {
             
             orderSimLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 36),
             orderSimLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            orderSimLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             buttonContinue.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonContinue.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            buttonContinue.topAnchor.constraint(equalTo: orderSimLabel.bottomAnchor, constant: 200),
+            buttonContinue.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            userAgreementLabel.topAnchor.constraint(equalTo: buttonContinue.bottomAnchor, constant: 10),
+            userAgreementLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ].forEach { $0.isActive = true }
     }
     
@@ -122,6 +140,7 @@ class PhoneLoginOptionViewController: UIViewController {
         view.addSubview(phoneNumberTextField)
         view.addSubview(orderSimLabel)
         view.addSubview(buttonContinue)
+        view.addSubview(userAgreementLabel)
         applyConstraints()
     }
 }
