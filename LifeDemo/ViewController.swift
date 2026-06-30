@@ -99,7 +99,6 @@ class ViewController: UIViewController {
         changeLanguageStackView.addArrangedSubview(changeLanguageLabel)
         
         view.addSubview(registrationButton)
-        
         applyConstraints()
     }
     
