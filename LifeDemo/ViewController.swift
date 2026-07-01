@@ -39,6 +39,7 @@ class ViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 10
+        // changeLanguageContainer.distribution = .equalCentering
         return stackView
     }()
     
@@ -65,9 +66,7 @@ class ViewController: UIViewController {
         changeLanguageContainer.spacing = 4
         //for event handling - views, addtarget to buttons
         changeLanguageContainer.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(changeLanguageStackViewTapped))
-//        changeLanguageContainer.distribution = .equalCentering
-        changeLanguageContainer.addGestureRecognizer(tap)
+        
         return changeLanguageContainer
     }()
     
@@ -75,7 +74,6 @@ class ViewController: UIViewController {
         let button = CustomButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Войти", for: .normal)
-        button.addTarget(self, action: #selector(goToSecondControllerView), for: .touchUpInside)
         
         return button
     }()
@@ -103,6 +101,11 @@ class ViewController: UIViewController {
         
         view.addSubview(registrationButton)
         applyConstraints()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(changeLanguageStackViewTapped))
+        changeLanguageStackView.addGestureRecognizer(tap)
+        
+        registrationButton.addTarget(self, action: #selector(goToSecondControllerView), for: .touchUpInside)
     }
     
     // MARK: - private methods
