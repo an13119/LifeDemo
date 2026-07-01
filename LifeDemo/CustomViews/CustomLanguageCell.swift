@@ -39,6 +39,7 @@ class CustomLanguageCell: UITableViewCell {
             
             langLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             langLabel.leadingAnchor.constraint(equalTo: langIcon.trailingAnchor, constant: 10),
+            langLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
             langSubLabel.leadingAnchor.constraint(equalTo: langIcon.trailingAnchor),
             langSubLabel.topAnchor.constraint(equalTo: langLabel.bottomAnchor, constant: 2),

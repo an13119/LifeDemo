@@ -28,7 +28,9 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            //tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
         ])
     }
     
@@ -49,6 +51,7 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         view.addSubview(tableView)
         setupTableView()
     }
