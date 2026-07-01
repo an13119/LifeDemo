@@ -26,9 +26,9 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
         //.self to pass as argument and not create an object
         tableView.register(CustomLanguageCell.self, forCellReuseIdentifier: "cell")
         NSLayoutConstraint.activate([
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40)
         ])
     }
     

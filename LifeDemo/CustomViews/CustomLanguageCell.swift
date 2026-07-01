@@ -27,12 +27,15 @@ class CustomLanguageCell: UITableViewCell {
         contentView.addSubview(langIcon)
         contentView.addSubview(langSubLabel)
         langIcon.translatesAutoresizingMaskIntoConstraints = false
+        langIcon.contentMode = .scaleAspectFit
         langLabel.translatesAutoresizingMaskIntoConstraints = false
         langSubLabel.translatesAutoresizingMaskIntoConstraints = false
         
         [
             langIcon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             langIcon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            langIcon.widthAnchor.constraint(equalToConstant: 40),
+            langIcon.heightAnchor.constraint(equalToConstant: 40),
             
             langLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             langLabel.leadingAnchor.constraint(equalTo: langIcon.trailingAnchor, constant: 10),
