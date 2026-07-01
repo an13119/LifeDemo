@@ -12,9 +12,9 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
     // MARK: - views
     let tableView = UITableView() //container
     let data = [
-        (UIImageView(image: UIImage(named: "taj_flag_icon")), "Точики", "TJ"),
-        (UIImageView(image: UIImage(named: "russ_lang_icon")), "Русский", "RU"),
-        (UIImageView(image: UIImage(named: "eng_lang_icon")), "English", "ENG"),
+        (UIImage(named: "taj_flag_icon"), "Точики", "TJ"),
+        (UIImage(named: "russ_lang_icon"), "Русский", "RU"),
+        (UIImage(named: "eng_lang_icon"), "English", "ENG"),
     ]
     
     // MARK: - private functions
@@ -25,6 +25,11 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
         //tell in advance which class to use to create one cell and under which label
         //.self to pass as argument and not create an object
         tableView.register(CustomLanguageCell.self, forCellReuseIdentifier: "cell")
+        NSLayoutConstraint.activate([
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +41,7 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomLanguageCell
         let item = data[indexPath.row]
-        //cell.langIcon.image = item.0
+        cell.langIcon.image = item.0
         cell.langLabel.text = item.1
         cell.langSubLabel.text = item.2
         return cell

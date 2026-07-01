@@ -63,8 +63,11 @@ class ViewController: UIViewController {
         changeLanguageContainer.axis = .horizontal
         changeLanguageContainer.alignment = .center
         changeLanguageContainer.spacing = 4
+        //for event handling - views, addtarget to buttons
+        changeLanguageContainer.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(changeLanguageStackViewTapped))
 //        changeLanguageContainer.distribution = .equalCentering
-        
+        changeLanguageContainer.addGestureRecognizer(tap)
         return changeLanguageContainer
     }()
     
@@ -153,10 +156,15 @@ class ViewController: UIViewController {
 //        ].forEach { $0.isActive = true }
     }
     
-    // MARK: - actions
+    // MARK: - event handlers
     
     @objc func goToSecondControllerView() {
         navigationController?.pushViewController(LoginViewController(), animated: true)
+    }
+    
+    @objc func changeLanguageStackViewTapped() {
+        let langListViewController = LanguageListViewController()
+        present(langListViewController, animated: true)
     }
 }
 

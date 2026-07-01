@@ -39,7 +39,7 @@ class CustomLanguageCell: UITableViewCell {
             
             langSubLabel.leadingAnchor.constraint(equalTo: langIcon.trailingAnchor),
             langSubLabel.topAnchor.constraint(equalTo: langLabel.bottomAnchor, constant: 2),
-            langSubLabel.bottomAnchor.constraint(equalTo: contentVew.bottomAnchor)
+            langSubLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             
         ].forEach { $0.isActive = true }
     }
