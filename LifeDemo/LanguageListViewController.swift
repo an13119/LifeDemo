@@ -1,0 +1,50 @@
+//
+//  LanguageListViewController.swift
+//  LifeDemo
+//
+//  Created by Nozanin on 01/07/26.
+//
+
+import UIKit
+//protocols data(2 methods) mandatory, behavior(optional)
+
+class LanguageListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+    // MARK: - views
+    let tableView = UITableView() //container
+    let data = [
+        (UIImageView(image: UIImage(named: "taj_flag_icon")), "Точики", "TJ"),
+        (UIImageView(image: UIImage(named: "russ_lang_icon")), "Русский", "RU"),
+        (UIImageView(image: UIImage(named: "eng_lang_icon")), "English", "ENG"),
+    ]
+    
+    // MARK: - private functions
+    private func setupTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        //tell in advance which class to use to create one cell and under which label
+        //.self to pass as argument and not create an object
+        tableView.register(CustomLanguageCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    //inner label - how to refer to var inside func, Index
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomLanguageCell
+        let item = data[indexPath.row]
+        //cell.langIcon.image = item.0
+        cell.langLabel.text = item.1
+        cell.langSubLabel.text = item.2
+        return cell
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(tableView)
+        setupTableView()
+    }
+}
