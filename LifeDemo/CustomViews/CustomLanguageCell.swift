@@ -26,6 +26,9 @@ class CustomLanguageCell: UITableViewCell {
         contentView.addSubview(langLabel)
         contentView.addSubview(langIcon)
         contentView.addSubview(langSubLabel)
+        contentView.backgroundColor = .white
+        langLabel.textColor = .black
+        langSubLabel.textColor = .black
         langIcon.translatesAutoresizingMaskIntoConstraints = false
         langIcon.contentMode = .scaleAspectFit
         langLabel.translatesAutoresizingMaskIntoConstraints = false

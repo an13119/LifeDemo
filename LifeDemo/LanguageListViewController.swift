@@ -25,6 +25,7 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
         //tell in advance which class to use to create one cell and under which label
         //.self to pass as argument and not create an object
         tableView.register(CustomLanguageCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .white
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -50,7 +51,7 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.addSubview(tableView)
         setupTableView()
     }

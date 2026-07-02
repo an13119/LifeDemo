@@ -167,6 +167,13 @@ class ViewController: UIViewController {
     
     @objc func changeLanguageStackViewTapped() {
         let langListViewController = LanguageListViewController()
+        langListViewController.modalPresentationStyle = .pageSheet
+        let rowHeight = CGFloat(langListViewController.tableView.rowHeight)
+        let rowNum = CGFloat(langListViewController.data.count)
+        let contentHeight = CGFloat(rowHeight * rowNum)
+        if let sheet = langListViewController.sheetPresentationController {
+            sheet.detents = [.custom(resolver: { _ in contentHeight })]
+        }
         present(langListViewController, animated: true)
     }
 }
