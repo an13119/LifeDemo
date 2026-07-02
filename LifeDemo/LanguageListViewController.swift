@@ -13,7 +13,9 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
     let label : UILabel = {
         let label = UILabel()
         label.text = "Язык приложения"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -29,25 +31,23 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.addSubview(label)
         //tell in advance which class to use to create one cell and under which label
-        //.self to pass as argument and not create an object
+        //.self to pass as argument while not creating an object
         tableView.register(CustomLanguageCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
     }
     
     func constraints() {
         NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20),
-            
-            label.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 10),
-            label.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-            label.heightAnchor.constraint(equalToConstant: 10)
         ])
     }
     
@@ -57,7 +57,6 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
     
     //inner label - how to refer to var inside func, Index
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomLanguageCell
         let item = data[indexPath.row]
         cell.langIcon.image = item.0
@@ -69,7 +68,9 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        view.addSubview(label)
         view.addSubview(tableView)
         setupTableView()
+        constraints()
     }
 }

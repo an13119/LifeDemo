@@ -52,12 +52,6 @@ class CustomLanguageCell: UITableViewCell {
         ].forEach { $0.isActive = true }
     }
     
-    func filldata(img: UIImage, label: String, subLabel: String) {
-        langIcon.image = img
-        langLabel.text = label
-        langSubLabel.text = subLabel
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         langIcon.image = nil
