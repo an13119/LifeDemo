@@ -10,6 +10,13 @@ import UIKit
 
 class LanguageListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - views
+    let label : UILabel = {
+        let label = UILabel()
+        label.text = "Язык приложения"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        return label
+    }()
+    
     let tableView = UITableView() //container
     let data = [
         (UIImage(named: "taj_flag_icon"), "Точики", "TJ"),
@@ -22,15 +29,25 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.addSubview(label)
         //tell in advance which class to use to create one cell and under which label
         //.self to pass as argument and not create an object
         tableView.register(CustomLanguageCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+    }
+    
+    func constraints() {
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 300),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20),
+            
+            label.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 10),
+            label.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+            label.heightAnchor.constraint(equalToConstant: 10)
         ])
     }
     
@@ -51,7 +68,7 @@ class LanguageListViewController : UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         view.addSubview(tableView)
         setupTableView()
     }

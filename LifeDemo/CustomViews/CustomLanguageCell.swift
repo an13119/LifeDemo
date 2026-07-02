@@ -27,6 +27,7 @@ class CustomLanguageCell: UITableViewCell {
         contentView.addSubview(langIcon)
         contentView.addSubview(langSubLabel)
         contentView.backgroundColor = .white
+        langLabel.font = .systemFont(ofSize: 20)
         langLabel.textColor = .black
         langSubLabel.textColor = .black
         langIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +45,7 @@ class CustomLanguageCell: UITableViewCell {
             langLabel.leadingAnchor.constraint(equalTo: langIcon.trailingAnchor, constant: 10),
             langLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            langSubLabel.leadingAnchor.constraint(equalTo: langIcon.trailingAnchor),
+            langSubLabel.leadingAnchor.constraint(equalTo: langIcon.trailingAnchor, constant: 12),
             langSubLabel.topAnchor.constraint(equalTo: langLabel.bottomAnchor, constant: 2),
             langSubLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             
